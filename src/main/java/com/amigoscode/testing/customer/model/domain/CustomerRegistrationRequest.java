@@ -1,6 +1,5 @@
 package com.amigoscode.testing.customer.model.domain;
 
-import com.amigoscode.testing.customer.model.domain.Customer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerRegistrationRequest {
