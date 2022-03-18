@@ -16,6 +16,6 @@ public interface ICustomerRepository extends CrudRepository<Customer, UUID> {
                     "WHERE phone_number = :phone_number",
             nativeQuery = true                              //To use native SQL statements instead of Entities names like Customer
     )
-    Optional<Customer> selectCustomerByPhoneNumber(@Param("phone_number") String phoneNumber );
+    Optional<Customer> selectCustomerByPhoneNumber(@Param("phone_number") String phoneNumber);
 
 }
