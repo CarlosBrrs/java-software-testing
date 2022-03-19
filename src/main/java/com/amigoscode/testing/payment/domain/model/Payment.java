@@ -2,11 +2,17 @@ package com.amigoscode.testing.payment.domain.model;
 
 import com.amigoscode.testing.payment.util.Currency;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@Entity
 public class Payment {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private UUID customerId;
     private BigDecimal amount;
