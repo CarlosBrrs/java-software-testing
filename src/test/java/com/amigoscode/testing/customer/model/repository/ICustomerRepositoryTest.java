@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest(       //Para probar contra una H2 se necesita esta anotación
-        properties = {"spring.jpa.properties.javax.persistence.validation.mode=none"}
+        properties = {"spring.jpa.properties.javax.persistence.validation.mode=none"} //Para que las anotaciones de la identidad tambien se validen en los test, y no solo en el run
 )
 class ICustomerRepositoryTest {
 
@@ -73,6 +73,7 @@ class ICustomerRepositoryTest {
         );
     }
 
+    //Fallan porque no se permiten name y phoneNumber null, verificando la excepcion del msg y el tipo de instancia
     @Test
     void itShouldNotSaveCustomerWhenNameIsNull() {
         //Given

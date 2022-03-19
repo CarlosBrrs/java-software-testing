@@ -42,7 +42,7 @@ public class CustomerRegistrationService implements ICustomerRegistrationService
 
         }
 
-        if(request.getCustomer().getId() == null ) request.getCustomer().setId(UUID.randomUUID());
+        if(request.getCustomer().getId() == null ) request.getCustomer().setId(UUID.randomUUID()); //Asignar del lado del back el id cuando viene null de la petición
 
         customerRepository.save(request.getCustomer()); //Si el cliente no existe en BD, entonces guardarlo (el que viene en el request)
     }
