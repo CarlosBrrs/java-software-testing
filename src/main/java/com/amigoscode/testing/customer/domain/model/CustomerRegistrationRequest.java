@@ -1,4 +1,4 @@
-package com.amigoscode.testing.customer.model.domain;
+package com.amigoscode.testing.customer.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

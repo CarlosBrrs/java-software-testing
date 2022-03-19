@@ -1,6 +1,6 @@
-package com.amigoscode.testing.customer.model.repository;
+package com.amigoscode.testing.customer.domain.repository;
 
-import com.amigoscode.testing.customer.model.domain.Customer;
+import com.amigoscode.testing.customer.domain.model.Customer;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

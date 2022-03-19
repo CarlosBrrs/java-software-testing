@@ -1,6 +1,7 @@
 package com.amigoscode.testing.customer.model.repository;
 
-import com.amigoscode.testing.customer.model.domain.Customer;
+import com.amigoscode.testing.customer.domain.model.Customer;
+import com.amigoscode.testing.customer.domain.repository.ICustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -13,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest(       //Para probar contra una H2 se necesita esta anotación
-        properties = {"spring.jpa.properties.javax.persistence.validation.mode=none"}
+        properties = {"spring.jpa.properties.javax.persistence.validation.mode=none"} //Para que las anotaciones de la identidad tambien se validen en los test, y no solo en el run
 )
 class ICustomerRepositoryTest {
 
@@ -73,6 +74,7 @@ class ICustomerRepositoryTest {
         );
     }
 
+    //Fallan porque no se permiten name y phoneNumber null, verificando la excepcion del msg y el tipo de instancia
     @Test
     void itShouldNotSaveCustomerWhenNameIsNull() {
         //Given
@@ -83,7 +85,7 @@ class ICustomerRepositoryTest {
 
         //Then
         assertThatThrownBy(() -> underTest.save(customer))
-                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.model.domain.Customer.name")
+                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.domain.model.Customer.name")
                 .isInstanceOf(DataIntegrityViolationException.class);
 
     }
@@ -98,7 +100,7 @@ class ICustomerRepositoryTest {
 
         //Then
         assertThatThrownBy(() -> underTest.save(customer))
-                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.model.domain.Customer.phoneNumber")
+                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.domain.model.Customer.phoneNumber")
                 .isInstanceOf(DataIntegrityViolationException.class);
 
     }

@@ -1,4 +1,6 @@
-package com.amigoscode.testing.customer.model.domain;
+package com.amigoscode.testing.customer.domain.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Entity
+@JsonIgnoreProperties(value = "id", allowGetters = true) //Ignora el id por lo que siempre llegará null del cliente, y permite usar el campo id para construir el json
 public class Customer {
 
     @Id

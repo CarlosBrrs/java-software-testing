@@ -1,8 +1,8 @@
 package com.amigoscode.testing.customer.services;
 
-import com.amigoscode.testing.customer.model.domain.Customer;
-import com.amigoscode.testing.customer.model.domain.CustomerRegistrationRequest;
-import com.amigoscode.testing.customer.model.repository.ICustomerRepository;
+import com.amigoscode.testing.customer.domain.model.Customer;
+import com.amigoscode.testing.customer.domain.model.CustomerRegistrationRequest;
+import com.amigoscode.testing.customer.domain.repository.ICustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -58,6 +58,28 @@ class CustomerRegistrationServiceTest {
     }
 
     @Test
+    void itShouldSaveNewCustomerWhenIdIsNull() {
+        //Given a phone number, id and customer
+        String phoneNumber = "000099";
+        Customer customer = new Customer(null, "Ronald", phoneNumber);
+
+        // ... a request (parameter of method under test)
+        CustomerRegistrationRequest request = new CustomerRegistrationRequest(customer);
+
+        // ... No customer with phone number founded
+        given(customerRepository.selectCustomerByPhoneNumber(phoneNumber)).willReturn(Optional.empty());
+
+        //When
+        underTest.serviceToRegisterNewCustomer(request);
+
+        //Then
+        then(customerRepository).should().save(customerArgumentCaptor.capture()); //Esto deberia pasar al ejecutar el método bajo prueba, y voy a capturar lo que deberia recibir el .save para poder realizar el assert con él
+        Customer customerArgumentCaptorValue = customerArgumentCaptor.getValue();
+        assertThat(customerArgumentCaptorValue).isEqualToIgnoringGivenFields(customer, "id");
+        assertThat(customerArgumentCaptorValue.getId()).isNotNull();
+    }
+
+    @Test
     void itShouldNotSaveNewCustomerWhenCustomerExists() {
         //Given
         String phoneNumber = "000099";
@@ -83,7 +105,7 @@ class CustomerRegistrationServiceTest {
     }
 
     @Test
-    void itShouldThrowNewIllegalSatateException() {
+    void itShouldThrowNewIllegalStateException() {
         //Given a phone number, id and customer
         String phoneNumber = "000099";
         UUID id = UUID.randomUUID();
