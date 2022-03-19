@@ -1,7 +1,6 @@
-package com.amigoscode.testing.customer.model.repository;
+package com.amigoscode.testing.customer.domain.repository;
 
 import com.amigoscode.testing.customer.domain.model.Customer;
-import com.amigoscode.testing.customer.domain.repository.ICustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
