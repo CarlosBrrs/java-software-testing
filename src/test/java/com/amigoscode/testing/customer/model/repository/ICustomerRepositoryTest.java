@@ -1,6 +1,7 @@
 package com.amigoscode.testing.customer.model.repository;
 
-import com.amigoscode.testing.customer.model.domain.Customer;
+import com.amigoscode.testing.customer.domain.model.Customer;
+import com.amigoscode.testing.customer.domain.repository.ICustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -84,7 +85,7 @@ class ICustomerRepositoryTest {
 
         //Then
         assertThatThrownBy(() -> underTest.save(customer))
-                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.model.domain.Customer.name")
+                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.domain.model.Customer.name")
                 .isInstanceOf(DataIntegrityViolationException.class);
 
     }
@@ -99,7 +100,7 @@ class ICustomerRepositoryTest {
 
         //Then
         assertThatThrownBy(() -> underTest.save(customer))
-                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.model.domain.Customer.phoneNumber")
+                .hasMessageContaining("not-null property references a null or transient value : com.amigoscode.testing.customer.domain.model.Customer.phoneNumber")
                 .isInstanceOf(DataIntegrityViolationException.class);
 
     }

@@ -1,8 +1,8 @@
 package com.amigoscode.testing.customer.services;
 
-import com.amigoscode.testing.customer.model.domain.Customer;
-import com.amigoscode.testing.customer.model.domain.CustomerRegistrationRequest;
-import com.amigoscode.testing.customer.model.repository.ICustomerRepository;
+import com.amigoscode.testing.customer.domain.model.Customer;
+import com.amigoscode.testing.customer.domain.model.CustomerRegistrationRequest;
+import com.amigoscode.testing.customer.domain.repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
