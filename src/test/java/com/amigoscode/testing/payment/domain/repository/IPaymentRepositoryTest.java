@@ -34,8 +34,8 @@ class IPaymentRepositoryTest {
         Optional<Payment> optionalPayment = underTest.findById(id);
         assertThat(optionalPayment)
                 .isPresent().hasValueSatisfying(p -> {
-                    assertThat(p).isEqualToComparingFieldByField(payment);
-                });
+            assertThat(p).isEqualToComparingFieldByField(payment);
+        });
 
     }
 }

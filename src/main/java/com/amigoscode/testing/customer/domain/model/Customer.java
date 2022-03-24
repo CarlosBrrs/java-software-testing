@@ -9,7 +9,8 @@ import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Entity
-@JsonIgnoreProperties(value = "id", allowGetters = true) //Ignora el id por lo que siempre llegará null del cliente, y permite usar el campo id para construir el json
+@JsonIgnoreProperties(value = "id", allowGetters = true)
+//Ignora el id por lo que siempre llegará null del cliente, y permite usar el campo id para construir el json
 public class Customer {
 
     @Id

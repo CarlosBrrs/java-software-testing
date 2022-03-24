@@ -1,7 +1,6 @@
 package com.amigoscode.testing.payment.util.paymentcharger;
 
 import com.amigoscode.testing.payment.util.Currency;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
