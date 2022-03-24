@@ -3,5 +3,6 @@ package com.amigoscode.testing.payment.util;
 public enum Currency {
     USD,
     GBP,
-    EUR
+    EUR,
+    COP //NOT SUPPORTED IN PAYMENTSERVICE
 }
