@@ -36,13 +36,15 @@ public class CustomerRegistrationService implements ICustomerRegistrationService
 
         if (optionalCustomer.isPresent()) { //Si el cliente existe en BD, comprueba si no es, o es el mismo que te paso yo
 
-            if (!optionalCustomer.get().getName().equals(request.getCustomer().getName())) throw new IllegalStateException(          //No es el mismo cliente?
-                    "Phone number: " + optionalCustomer.get().getPhoneNumber() + " is already taken by" + optionalCustomer.get().getName());
+            if (!optionalCustomer.get().getName().equals(request.getCustomer().getName()))
+                throw new IllegalStateException(          //No es el mismo cliente?
+                        "Phone number: " + optionalCustomer.get().getPhoneNumber() + " is already taken by" + optionalCustomer.get().getName());
             else return; // Es el mismo cliente
 
         }
 
-        if(request.getCustomer().getId() == null ) request.getCustomer().setId(UUID.randomUUID()); //Asignar del lado del back el id cuando viene null de la petición
+        if (request.getCustomer().getId() == null)
+            request.getCustomer().setId(UUID.randomUUID()); //Asignar del lado del back el id cuando viene null de la petición
 
         customerRepository.save(request.getCustomer()); //Si el cliente no existe en BD, entonces guardarlo (el que viene en el request)
     }
