@@ -27,7 +27,7 @@ class CustomerRegistrationServiceTest {
 
     @Captor
     private ArgumentCaptor<Customer> customerArgumentCaptor;
-    private CustomerRegistrationService underTest;
+    private ICustomerRegistrationService underTest;
 
     @BeforeEach
     void setUp() {
