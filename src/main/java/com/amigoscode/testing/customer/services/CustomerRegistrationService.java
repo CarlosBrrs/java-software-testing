@@ -3,6 +3,7 @@ package com.amigoscode.testing.customer.services;
 import com.amigoscode.testing.customer.domain.model.Customer;
 import com.amigoscode.testing.customer.domain.model.CustomerRegistrationRequest;
 import com.amigoscode.testing.customer.domain.repository.ICustomerRepository;
+import com.amigoscode.testing.utils.PhoneNumberValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,12 @@ import java.util.UUID;
 public class CustomerRegistrationService implements ICustomerRegistrationService {
 
     private final ICustomerRepository customerRepository;
+    private final PhoneNumberValidator phoneNumberValidator;
 
     @Autowired
-    public CustomerRegistrationService(ICustomerRepository customerRepository) {
+    public CustomerRegistrationService(ICustomerRepository customerRepository, PhoneNumberValidator phoneNumberValidator) {
         this.customerRepository = customerRepository;
+        this.phoneNumberValidator = phoneNumberValidator;
     }
 
     @Override
@@ -30,6 +33,10 @@ public class CustomerRegistrationService implements ICustomerRegistrationService
          */
 
         String phoneNumber = request.getCustomer().getPhoneNumber();
+
+        if (!phoneNumberValidator.test(phoneNumber)) {
+            throw new IllegalStateException("Phone number "+ phoneNumber+" is not colombian/valid");
+        }
 
         Optional<Customer> optionalCustomer = customerRepository.selectCustomerByPhoneNumber(
                 phoneNumber);
