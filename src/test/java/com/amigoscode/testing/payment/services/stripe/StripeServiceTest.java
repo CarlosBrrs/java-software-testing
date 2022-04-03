@@ -1,5 +1,7 @@
-package com.amigoscode.testing.payment.services;
+package com.amigoscode.testing.payment.services.stripe;
 
+import com.amigoscode.testing.payment.services.stripe.StripeApi;
+import com.amigoscode.testing.payment.services.stripe.StripeService;
 import com.amigoscode.testing.payment.util.Currency;
 import com.amigoscode.testing.payment.util.paymentcharger.IPaymentCharger;
 import com.amigoscode.testing.payment.util.paymentcharger.PaymentCharge;

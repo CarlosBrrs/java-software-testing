@@ -1,4 +1,4 @@
-package com.amigoscode.testing.payment.services;
+package com.amigoscode.testing.payment.services.stripe;
 
 import com.amigoscode.testing.payment.util.Currency;
 import com.amigoscode.testing.payment.util.paymentcharger.IPaymentCharger;
@@ -7,6 +7,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.net.RequestOptions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,6 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+//Spring inicializará este bean cuando la propiedad stripe.enabled tenga el valor true
+@ConditionalOnProperty(
+        value = "stripe.enabled",
+        havingValue = "true"
+)
 public class StripeService implements IPaymentCharger {
 
     private final StripeApi stripeApi;
