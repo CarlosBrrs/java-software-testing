@@ -1,4 +1,4 @@
-package com.amigoscode.testing.payment.services;
+package com.amigoscode.testing.payment.services.stripe;
 
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;

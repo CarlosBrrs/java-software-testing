@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Entity
-@JsonIgnoreProperties(value = "id", allowGetters = true)
+@JsonIgnoreProperties(/*value = "id", */allowGetters = true)
 //Ignora el id por lo que siempre llegará null del cliente, y permite usar el campo id para construir el json
 public class Customer {
 
@@ -55,5 +55,14 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }
